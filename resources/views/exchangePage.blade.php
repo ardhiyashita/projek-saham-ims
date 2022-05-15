@@ -45,13 +45,13 @@
             </tfoot>
             <tbody>
             @foreach($array as $val)
-            <tr>
-                <td>{{ $val['6. Last Refreshed'] }}</td>
-                <td>{{ $val['2. From_Currency Name'] }}</td>
-                <td>{{ $val['4. To_Currency Name'] }}</td>
-                <td>{{ $val['5. Exchange Rate'] }}</td>
-                <td>{{ $val['8. Bid Price'] }}</td>
-                <td>{{ $val['9. Ask Price'] }}</td>
+            <tr id="loadbasic">
+                <td id="result">{{ $val['6. Last Refreshed'] }}</td>
+                <td id="result">{{ $val['2. From_Currency Name'] }}</td>
+                <td id="result">{{ $val['4. To_Currency Name'] }}</td>
+                <td id="result">{{ $val['5. Exchange Rate'] }}</td>
+                <td id="result">{{ $val['8. Bid Price'] }}</td>
+                <td id="result">{{ $val['9. Ask Price'] }}</td>
             </tr>
             @endforeach
         </tbody>
@@ -59,8 +59,28 @@
 </div>
 </div>
     <script language="javascript">
-        setInterval(function(){
-            window.location.reload(1);
-            }, 30000);
+        // setInterval(function(){
+        //     window.location.reload(1);
+        //     }, 30000);
+
+            $(function(){
+    
+                // optional: don't cache ajax to force the content to be fresh
+                $.ajaxSetup ({
+                    cache: false
+                });
+
+                // specify loading spinner
+                // var spinner = "<img src='http://i.imgur.com/pKopwXp.gif' alt='loading...' />";
+                
+                // specify the server/url you want to load data from
+                var url = "http://localhost:8000/exchange-price";
+                
+                // on click, load the data dynamically into the #result div
+                $("#loadbasic").click(function(){
+                    $("#result").html("td").load(url);
+                });
+
+            });
     </script>
 @endsection

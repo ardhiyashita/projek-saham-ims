@@ -30,8 +30,11 @@ Route::get('/back', function () {
     return ;
 })->name('back');
 
+Route::get('/demo', [SahamController::class, 'intraday_demo'])->name('demo');
+
 Route::get('/', [SahamController::class, 'stock_page'])->name('stock_page');
 Route::post('/intraday-stock', [SahamController::class, 'intraday_stock'])->name('intraday_stock');
+Route::post('/save-intraday-stock', [SahamController::class, 'save_intraday_stock'])->name('save_intraday_stock');
 
 Route::get('/forex', [SahamController::class, 'forex_page'])->name('forex_page');
 Route::post('/intraday-forex', [SahamController::class, 'intraday_forex'])->name('intraday_forex');

@@ -6,7 +6,7 @@
 
 <div class="row">
         <div class="col-12">
-        <a class="btn-lg btn-primary" style="text-decoration: none;" href="{{ route('forex_page') }}">Pilih Company Lain</a>
+        <a class="btn-lg btn-primary" style="text-decoration: none;" href="{{ route('company_page') }}">Pilih Company Lain</a>
           <div class="card my-4 mt-5">          
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -42,18 +42,21 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">GrossProfitTTM</th>
                     </tr>
                   </tfoot>
-                  <tbody>
+                  <tbody>                  
                   @foreach($array as $value)
-                    <tr>
+                  <tr>
+                    @if($loop->iteration > 1)
+                      @break
+                    @endif
                       <td> <h6 class="mb-0 text-sm">{{ $array[7] }}</h6> </td>
                       <td> <h6 class="mb-0 text-sm">{{ $array[12] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[17] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[35] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[15] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[20] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[25] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[26] }}</h6> </td>
-                      <td> <h6 class="mb-0 text-sm">{{ $array[27] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[17] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[35] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[15] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[20] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[25] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[26] }}</h6> </td>
+                      <td> <h6 class="mb-0 text-sm text-center">{{ $array[27] }}</h6> </td>
                     </tr>
                     @endforeach
                   </tbody>

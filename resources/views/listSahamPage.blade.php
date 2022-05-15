@@ -9,7 +9,7 @@
         <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Pilih Jenis Emiten</h6>
+            <h6 class="text-white text-capitalize ps-3">Data Saham</h6>
             </div>
         </div>
         <div class="card-body">
@@ -21,8 +21,13 @@
             <form action="{{ route('intraday_stock') }}" method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
+                    <div class="col-3 mb-4"> Dari Tanggal (From)
+                        <input type="date" name="tanggal_awal" class="form-select shadow-secondary border-2 ps-0">
+                        Sampai Tanggal (To)
+                        <input type="date" name="tanggal_akhir" class="form-select shadow-secondary border-2 ps-0">
+                    </div>
                     <!-- <h4 class="col-md-12 mb-0" style="color:white; font-family:'Times New Roman'">Pilih Jenis Emiten</h4> -->
-                    <div class="col-md-12">
+                    <div class="col-md-12"> Pilih Jenis Emiten
                         <select name="simbol" class="form-select shadow-secondary border-2 ps-0">
                             @foreach($list as $item)
                             <option value="{{ $item->simbol }}" class="form-check-input" id=""
