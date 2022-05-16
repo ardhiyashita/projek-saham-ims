@@ -17,5 +17,4 @@ class Saham extends Model
     {
         return $this->belongsTo(Emiten::class, 'emiten_id', 'id');
     }
-
 }
