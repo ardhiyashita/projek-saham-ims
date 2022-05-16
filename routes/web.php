@@ -22,7 +22,7 @@ Route::get('/per', function () {
     return view('tableCompany');
 });
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard2', function () {
     return view('dashboard');
 })->name('dashboard_page');
 
@@ -31,10 +31,14 @@ Route::get('/back', function () {
 })->name('back');
 
 Route::get('/demo', [SahamController::class, 'intraday_demo'])->name('demo');
+Route::get('/dashboard', [SahamController::class, 'dashboard'])->name('dashboard_page');
 
-Route::get('/', [SahamController::class, 'stock_page'])->name('stock_page');
+Route::get('/intraday', [SahamController::class, 'stock_page'])->name('stock_page');
 Route::post('/intraday-stock', [SahamController::class, 'intraday_stock'])->name('intraday_stock');
 Route::post('/save-intraday-stock', [SahamController::class, 'save_intraday_stock'])->name('save_intraday_stock');
+
+Route::get('/daily', [SahamController::class, 'daily_stock_page'])->name('daily_stock_page');
+Route::post('/daily-stock', [SahamController::class, 'daily_stock'])->name('daily_stock'); 
 
 Route::get('/forex', [SahamController::class, 'forex_page'])->name('forex_page');
 Route::post('/intraday-forex', [SahamController::class, 'intraday_forex'])->name('intraday_forex');

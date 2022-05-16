@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Saham Page')
+@section('title', 'Rekap Saham Page')
     
 @section('content')
 
@@ -11,7 +11,7 @@
           <div class="card my-4 mt-5">          
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Data Saham</h6>
+                <h6 class="text-white text-capitalize ps-3">Data Rekap Saham</h6>
               </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -21,18 +21,16 @@
                     <tr>
                       <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No.</th> -->
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Key</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Open</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Close</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grafik</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price Open</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price Close</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sumber</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Key</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Open</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Close</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Grafik</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price Open</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price Close</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sumber</th>
                     </tr>
                   </tfoot>
@@ -52,9 +50,6 @@
                         <h6 class="mb-0 text-sm text-center">{{ $val->close }}</h6>
                       </td>
                       <td>
-                      <!-- <td>
-                        <h6 class="mb-0 text-sm text-center">{{ naik/turun }}</h6>
-                      </td> -->
                         <h6 class="mb-0 text-sm text-center">{{ $val->sumber }}</h6>
                       </td>
                     </tr>
