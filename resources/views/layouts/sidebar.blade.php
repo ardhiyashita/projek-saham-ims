@@ -26,6 +26,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link saham text-white" href="{{ route('daily_stock_page') }}">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Rekap Saham</span>
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link forex text-white" href="{{ route('forex_page') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
