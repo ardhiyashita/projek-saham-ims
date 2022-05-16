@@ -22,16 +22,16 @@ class SahamController extends Controller
 
     private $input; //this line is important and it was missing in your code
 
-    public function dashboard(Type $var = null)
+    public function dashboard()
     {
         // $close = RekapSaham::pluck('close');
         // $tanggal = RekapSaham::pluck('tanggal');
         $data = RekapSaham::all();
         if ($data) {
-            
+
             return view('dashboard', compact(response()->json($data)));
         }
-    
+
         // return view('dashboard', [
         //    'proc' => $data
         // ]);
@@ -40,7 +40,7 @@ class SahamController extends Controller
         //     $view = view('dashboard', [
         //    'proc' => $data
         //         ])->render();
-                
+
         //     return response()->json($data);
         //  }
         // return view('dashboard', compact('close', 'tanggal'));
@@ -57,45 +57,45 @@ class SahamController extends Controller
         $key = 'MNOJKRVA1YI2TVBN';
         $simbol = $request->simbol;
         // dd($simbol);
-        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=".$simbol."&interval=5min&apikey=".$key);
+        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" . $simbol . "&interval=5min&apikey=" . $key);
 
-            if ($response->status() !== 200) {
-                return 'Conection Failed!!';
-            }
+        if ($response->status() !== 200) {
+            return 'Conection Failed!!';
+        }
 
-            $data = json_decode($response,true);
-            // dd($data);
+        $data = json_decode($response, true);
+        // dd($data);
 
-            if (empty($data)) {
-                return 'Return Empty Data';
-            }
+        if (empty($data)) {
+            return 'Return Empty Data';
+        }
 
-            if($data){
-                $key = array_values($data);
-                $array = $key[1];
+        if ($data) {
+            $key = array_values($data);
+            $array = $key[1];
 
-                $emiten = Emiten::where('simbol', '=', $simbol)->first();
-                $emiten_id = $emiten->id;
-                //mencari emiten saham        
+            $emiten = Emiten::where('simbol', '=', $simbol)->first();
+            $emiten_id = $emiten->id;
+            //mencari emiten saham        
 
-                $count = count($array);
-                //menghitung jumlah data yang didapatkan
+            $count = count($array);
+            //menghitung jumlah data yang didapatkan
 
-                foreach($array as $key => $value) {
-                    // to dump array key and value
-                    // if( > 2){
-                    //     break;
-                    // }
-                    // else{
-                        Saham::create([
-                            'emiten_id' => $emiten_id,
-                            'tanggal' => $key,
-                            'open' => $value['1. open'],
-                            'high' => $value['2. high'],
-                            'low' => $value['3. low'],
-                            'close' => $value['4. close'],
-                            'volume' => $value['5. volume'],
-                        ]);
+            foreach ($array as $key => $value) {
+                // to dump array key and value
+                // if( > 2){
+                //     break;
+                // }
+                // else{
+                Saham::create([
+                    'emiten_id' => $emiten_id,
+                    'tanggal' => $key,
+                    'open' => $value['1. open'],
+                    'high' => $value['2. high'],
+                    'low' => $value['3. low'],
+                    'close' => $value['4. close'],
+                    'volume' => $value['5. volume'],
+                ]);
 
                 $tanggal_awal = Carbon::parse($request->tanggal_awal);
                 $tanggal_awal->toDateTimeString();
@@ -105,7 +105,7 @@ class SahamController extends Controller
                 $tanggal_akhir->toDateTimeString();
                 //mengambil input tanggal_akhir
 
-                if($tanggal_akhir != $tanggal_awal){
+                if ($tanggal_akhir != $tanggal_awal) {
                     $saham = Saham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
                     // $saham = DB::table('sahams')
                     // ->select('*')
@@ -115,22 +115,20 @@ class SahamController extends Controller
                     // print('akhir');
                     // dd($saham, $tanggal_akhir, $tanggal_awal);
                 }
-                
-                if($tanggal_akhir == $tanggal_awal){   
+
+                if ($tanggal_akhir == $tanggal_awal) {
 
                     $expiryDate = Carbon::createFromFormat('Y-m-d H:i:s', $tanggal_awal)->endOfDay()->toDateTimeString();
                     //mengambil input tanggal_besok
                     $saham = Saham::whereBetween('tanggal', [$tanggal_awal, $expiryDate])->where('emiten_id', '=', $emiten_id)->get();
                     // print('awal');
                     // dd($saham, $tanggal_awal, $expiryDate);
-                }  
-
                 }
-
-                // dd($array);                
-                return view('sahamPage', compact('saham', 'simbol', 'count'));
             }
-            
+
+            // dd($array);                
+            return view('sahamPage', compact('saham', 'simbol', 'count'));
+        }
     }
 
     public function daily_stock_page()
@@ -139,12 +137,12 @@ class SahamController extends Controller
         return view('listRekapSahamPage', compact('list'));
     }
 
-    
+
     public function daily_stock(Request $request)
-    {        
+    {
         $data = array(
-            'api' => $this->input->get('api',TRUE),
-            'excel' => $this->input->get('excel',TRUE),
+            'api' => $this->input->get('api', TRUE),
+            'excel' => $this->input->get('excel', TRUE),
         );
 
         dd($data);
@@ -152,44 +150,44 @@ class SahamController extends Controller
         $key = 'MNOJKRVA1YI2TVBN';
         $simbol = $request->simbol;
         // dd($simbol);
-        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=".$simbol."&apikey=".$key);
+        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" . $simbol . "&apikey=" . $key);
 
-            if ($response->status() !== 200) {
-                return 'Conection Failed!!';
-            }
+        if ($response->status() !== 200) {
+            return 'Conection Failed!!';
+        }
 
-            $data = json_decode($response,true);
-            // dd($data);
+        $data = json_decode($response, true);
+        // dd($data);
 
-            if (empty($data)) {
-                return 'Return Empty Data';
-            }
+        if (empty($data)) {
+            return 'Return Empty Data';
+        }
 
-            if($data){
-                $key = array_values($data);
-                $array = $key[1];
-                // dd($array);
+        if ($data) {
+            $key = array_values($data);
+            $array = $key[1];
+            // dd($array);
 
-                $emiten = Emiten::where('simbol', '=', $simbol)->first();
-                $emiten_id = $emiten->id;
-                //mencari emiten saham        
+            $emiten = Emiten::where('simbol', '=', $simbol)->first();
+            $emiten_id = $emiten->id;
+            //mencari emiten saham        
 
-                $count = count($array);
-                //menghitung jumlah data yang didapatkan
+            $count = count($array);
+            //menghitung jumlah data yang didapatkan
 
-                foreach($array as $key => $value) {
-                    // to dump array key and value
-                    // if( > 2){
-                    //     break;
-                    // }
-                    // else{
-                        RekapSaham::create([
-                            'emiten_id' => $emiten_id,
-                            'tanggal' => $key,
-                            'open' => $value['1. open'],
-                            'close' => $value['4. close'],
-                            'sumber' => 'API Alphavantage',
-                        ]);
+            foreach ($array as $key => $value) {
+                // to dump array key and value
+                // if( > 2){
+                //     break;
+                // }
+                // else{
+                RekapSaham::create([
+                    'emiten_id' => $emiten_id,
+                    'tanggal' => $key,
+                    'open' => $value['1. open'],
+                    'close' => $value['4. close'],
+                    'sumber' => 'API Alphavantage',
+                ]);
 
                 $tanggal_awal = Carbon::parse($request->tanggal_awal)->toDateString();
                 //mengambil input tanggal_awal
@@ -197,24 +195,22 @@ class SahamController extends Controller
                 $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
                 //mengambil input tanggal_akhir
 
-                if($tanggal_akhir != $tanggal_awal){
+                if ($tanggal_akhir != $tanggal_awal) {
                     $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
                     // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
                 }
-                
-                if($tanggal_akhir == $tanggal_awal){   
+
+                if ($tanggal_akhir == $tanggal_awal) {
 
                     $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
                     // print('awal');
                     // dd($saham, $tanggal_awal, $expiryDate);
-                }  
-
                 }
-
-                // dd($array);                
-                return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
             }
-            
+
+            // dd($array);                
+            return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
+        }
     }
 
     public function save_intraday_stock(Request $request)
@@ -330,32 +326,30 @@ class SahamController extends Controller
     {
         $key = 'MNOJKRVA1YI2TVBN';
         // dd($simbol);
-        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=".$key);
+        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=" . $key);
 
-            if ($response->status() !== 200) {
-                return 'Conection Failed!!';
-            }
+        if ($response->status() !== 200) {
+            return 'Conection Failed!!';
+        }
 
-            $data = json_decode($response,true);
-            // dd($data);
+        $data = json_decode($response, true);
+        // dd($data);
 
-            if (empty($data)) {
-                return 'Return Empty Data';
-            }
+        if (empty($data)) {
+            return 'Return Empty Data';
+        }
 
-            if($data){
-                $key = array_values($data);
-                $array = $key[1];
-                dd($array);
+        if ($data) {
+            $key = array_values($data);
+            $array = $key[1];
+            dd($array);
 
-                // dd($array);                
-                return view('sahamPage', compact('array'));
-            }
-            
+            // dd($array);                
+            return view('sahamPage', compact('array'));
+        }
     }
-<<<<<<< HEAD
 
-    public function daily_stock(Request $request)
+    /*public function daily_stock(Request $request)
     {
         $key = 'MNOJKRVA1YI2TVBN';
         $simbol = $request->simbol;
@@ -434,12 +428,35 @@ class SahamController extends Controller
                 return view('sahamPage', compact('saham', 'simbol', 'count'));
             }
             
-    }
+    }*/
 
-    public function eps_page(){
+    public function eps_page()
+    {
         return view('epspage');
     }
-=======
->>>>>>> eb5e141a4defe0dec9ee9df89c389dcff3eb1683
-    
+
+    public function per_page()
+    {
+        return view('perpage');
+    }
+
+    public function pbv_page()
+    {
+        return view('pbvpage');
+    }
+
+    public function roe_page()
+    {
+        return view('roepage');
+    }
+
+
+    public function dy_page()
+    {
+        return view('dypage');
+    }
+    public function der_page()
+    {
+        return view('derpage');
+    }
 }

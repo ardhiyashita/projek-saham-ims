@@ -38,7 +38,7 @@ Route::post('/intraday-stock', [SahamController::class, 'intraday_stock'])->name
 Route::post('/save-intraday-stock', [SahamController::class, 'save_intraday_stock'])->name('save_intraday_stock');
 
 Route::get('/daily', [SahamController::class, 'daily_stock_page'])->name('daily_stock_page');
-Route::post('/daily-stock', [SahamController::class, 'daily_stock'])->name('daily_stock'); 
+Route::post('/daily-stock', [SahamController::class, 'daily_stock'])->name('daily_stock');
 
 Route::get('/forex', [SahamController::class, 'forex_page'])->name('forex_page');
 Route::post('/intraday-forex', [SahamController::class, 'intraday_forex'])->name('intraday_forex');
@@ -52,3 +52,8 @@ Route::post('/company-data', [SahamController::class, 'company_data'])->name('co
 Route::get('/company-list', [SahamController::class, 'company_list'])->name('company_list');
 
 Route::get('/eps', [SahamController::class, 'eps_page'])->name('eps_page');
+Route::get('/per', [SahamController::class, 'per_page'])->name('per_page');
+Route::get('/pbv', [SahamController::class, 'pbv_page'])->name('pbv_page');
+Route::get('/roe', [SahamController::class, 'roe_page'])->name('roe_page');
+Route::get('/dy', [SahamController::class, 'dy_page'])->name('dy_page');
+Route::get('/der', [SahamController::class, 'der_page'])->name('der_page');

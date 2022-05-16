@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'EPS Page')
+@section('title', 'ROE Page')
     
 @section('content')
 
@@ -9,14 +9,14 @@
       <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">EPS (Earning Per Share)</h6>
+            <h6 class="text-white text-capitalize ps-3">ROE (Return On Equity)</h6>
           </div>
       </div>
       <div class="card-body">
         <div>
           <p class="text-sm">
-            EPS atau yang dapat dikenal sebagai <i> Earning Per Share </i> adalah banyaknya laba bersih yang dihasilkan dibagi dengan lembar saham. berikut ini merupakan 
-            rumus yang digunakan dalam perhitungan EPS ini. 
+            ROE atau yang dapat dikenal sebagai <i> Return On Equity </i> adalah rasio yang diperoleh dari laba bersih yang telah dibukukan perusahaan dengan membandingkan total kekayaan bersih yang dimiliki oleh perusahaan. Berikut ini merupakan 
+            rumus yang digunakan dalam perhitungan ROE ini. 
           </p>     
         </div>
       </div>
@@ -28,12 +28,12 @@
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Rumus EPS</h6>
+              <h6 class="text-white text-capitalize ps-3">Rumus ROE</h6>
             </div>
         </div>
         <div class="card-body">
           <div>
-            <h6 class="mb-0" style="text-align: center;">EPS = Laba Bersih : Jumlah Lembar Saham</h6>          
+            <h6 class="mb-0" style="text-align: center;">ROE = Laba Bersih : Kekayaan Bersih</h6>          
           </div>
         </div>
     </div>
@@ -45,19 +45,19 @@
       <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Kalkulator EPS</h6>
+            <h6 class="text-white text-capitalize ps-3">Kalkulator ROE</h6>
           </div>
       </div>
       <div class="card-body">
           <p class="text-sm">
-            Anda dapat melakukan perhitungan terhadap besarnya EPS dengan masukkan data yang diperlukan dibawah ini
+            Anda dapat melakukan perhitungan terhadap besarnya ROE dengan masukkan data yang diperlukan dibawah ini
           </p>     
           <form action="" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
                   <div class="col-3 mb-4"> <p class="text-sm put"><b>Laba Bersih</b></p>
                       <input type="number" name="laba_bersih" class="form-control shadow-secondary border-2 input">
-                      <label class="text-sm put"><b>Jumlah Lembar Saham</b></label>
+                      <label class="text-sm put"><b>Kekayaan Bersih</b></label>
                       <input type="number" name="jumlah_lembar_saham" class="form-control shadow-secondary border-2 input">
                   </div>
                   <button class="btn btn-primary mt-3" type="submit">Submit</button>
@@ -76,12 +76,12 @@
     <div class="card my-4">
     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-          <h6 class="text-white text-capitalize ps-3">Hasil Perhitungan EPS</h6>
+          <h6 class="text-white text-capitalize ps-3">Hasil Perhitungan ROE</h6>
         </div>
     </div>
     <div class="card-body">
         <p class="text-sm">
-          Anda dapat melihat hasil perhitungan terhadap besarnya EPS berdasarkan data yang anda masukkan tadi.
+          Anda dapat melihat hasil perhitungan terhadap besarnya ROE berdasarkan data yang anda masukkan tadi.
         </p>
         <div>
           <h2 class="mb-0 calceps" style="text-align: center;">100</h2>          
