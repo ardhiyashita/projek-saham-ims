@@ -50,6 +50,65 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link anfu text-white" data-toggle="collapse">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">receipt_long</i>
+            </div>
+            <span class="nav-link-text ms-1">Analisis Fundamental</span>
+          </a>
+        </li>
+        <div class="submenu-collapse" id="anfumenu">
+          <li class="nav-item">
+            <a class="nav-link eps text-white " href="{{ route('eps_page') }}">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">EPS</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">PER</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">PBV</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">ROE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">DY</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white " href="">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">table_view</i>
+              </div>
+              <span class="nav-link-text ms-1">DER</span>
+            </a>
+          </li>
+        </div>
+
+        <li class="nav-item">
           <a class="nav-link company-list text-white " href="{{ route('company_list') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>

@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard_page');
 
 Route::get('/back', function () {
-    return ;
+    return;
 })->name('back');
 
 Route::get('/demo', [SahamController::class, 'intraday_demo'])->name('demo');
@@ -46,3 +46,5 @@ Route::get('/company', [SahamController::class, 'company_page'])->name('company_
 Route::post('/company-data', [SahamController::class, 'company_data'])->name('company_data');
 
 Route::get('/company-list', [SahamController::class, 'company_list'])->name('company_list');
+
+Route::get('/eps', [SahamController::class, 'eps_page'])->name('eps_page');

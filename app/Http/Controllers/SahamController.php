@@ -110,7 +110,7 @@ class SahamController extends Controller
         dd($request);
     }
 
-    public function forex_page(Type $var = null)
+    public function forex_page()
     {
         $list = Valas::all();
         return view('listForexPage', compact('list'));
@@ -321,6 +321,10 @@ class SahamController extends Controller
                 return view('sahamPage', compact('saham', 'simbol', 'count'));
             }
             
+    }
+
+    public function eps_page(){
+        return view('epspage');
     }
     
 }
