@@ -9,18 +9,15 @@ use App\Models\Valas;
 use Carbon\Carbon;
 use DateInterval;
 use Illuminate\Http\Request;
-use Illuminate\Queue\Events\Looping;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Carbon as SupportCarbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Redis;
-use PhpParser\Node\Stmt\Foreach_;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class SahamController extends Controller
 {
-
-    private $input; //this line is important and it was missing in your code
 
     public function dashboard(Type $var = null)
     {
@@ -142,78 +139,105 @@ class SahamController extends Controller
     
     public function daily_stock(Request $request)
     {        
-        $data = array(
-            'api' => $this->input->get('api',TRUE),
-            'excel' => $this->input->get('excel',TRUE),
-        );
+        $excel = $request->excel;
+        $api = $request->api;
 
-        dd($data);
+        if($api or $excel){
 
-        $key = 'MNOJKRVA1YI2TVBN';
-        $simbol = $request->simbol;
-        // dd($simbol);
-        $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=".$simbol."&apikey=".$key);
+            if($api){
 
-            if ($response->status() !== 200) {
-                return 'Conection Failed!!';
-            }
+            $key = 'MNOJKRVA1YI2TVBN';
+            $simbol = $request->simbol;
+            // dd($simbol);
+            $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=".$simbol."&apikey=".$key);
 
-            $data = json_decode($response,true);
-            // dd($data);
-
-            if (empty($data)) {
-                return 'Return Empty Data';
-            }
-
-            if($data){
-                $key = array_values($data);
-                $array = $key[1];
-                // dd($array);
-
-                $emiten = Emiten::where('simbol', '=', $simbol)->first();
-                $emiten_id = $emiten->id;
-                //mencari emiten saham        
-
-                $count = count($array);
-                //menghitung jumlah data yang didapatkan
-
-                foreach($array as $key => $value) {
-                    // to dump array key and value
-                    // if( > 2){
-                    //     break;
-                    // }
-                    // else{
-                        RekapSaham::create([
-                            'emiten_id' => $emiten_id,
-                            'tanggal' => $key,
-                            'open' => $value['1. open'],
-                            'close' => $value['4. close'],
-                            'sumber' => 'API Alphavantage',
-                        ]);
-
-                $tanggal_awal = Carbon::parse($request->tanggal_awal)->toDateString();
-                //mengambil input tanggal_awal
-
-                $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
-                //mengambil input tanggal_akhir
-
-                if($tanggal_akhir != $tanggal_awal){
-                    $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
-                    // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
+                if ($response->status() !== 200) {
+                    return 'Conection Failed!!';
                 }
+
+                $data = json_decode($response,true);
+                // dd($data);
+
+                if (empty($data)) {
+                    return 'Return Empty Data';
+                }
+
+                if($data){
+                    $key = array_values($data);
+                    $array = $key[1];
+                    // dd($array);
+
+                    $emiten = Emiten::where('simbol', '=', $simbol)->first();
+                    $emiten_id = $emiten->id;
+                    //mencari emiten saham        
+
+                    $count = count($array);
+                    //menghitung jumlah data yang didapatkan
+
+                    foreach($array as $key => $value) {
+                        // to dump array key and value
+                        // if( > 2){
+                        //     break;
+                        // }
+                        // else{
+                            RekapSaham::create([
+                                'emiten_id' => $emiten_id,
+                                'tanggal' => $key,
+                                'open' => $value['1. open'],
+                                'close' => $value['4. close'],
+                                'sumber' => 'API Alphavantage',
+                            ]);
+
+                    $tanggal_awal = Carbon::parse($request->tanggal_awal)->toDateString();
+                    //mengambil input tanggal_awal
+
+                    $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
+                    //mengambil input tanggal_akhir
+
+                    if($tanggal_akhir != $tanggal_awal){
+                        $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
+                        // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
+                    }
+                    
+                    if($tanggal_akhir == $tanggal_awal){   
+
+                        $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
+                        // print('awal');
+                        // dd($saham, $tanggal_awal, $expiryDate);
+                    }  
+
+                    }
+                }
+
+                return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
+
+            }
+
+            if($excel){
+                $request->validate([
+                    'files' => 'required|mimes:xls,xlsx',
+                ]);
+
+                // Store on default disk
+                $file = $request->files;
+                $path = $request->file('files')->getClientOriginalName();
+                $filename = "/assets_edit/".$path;
+                $file->move($filename);
+
+                // $import = Excel::store(new InvoicesExport(2018), $filename);
+
+                dd($filename);
+                // $data = Excel::load($path)->get();
+                $data = Excel::import(new UsersImport, $path);
+                dd($data);
                 
-                if($tanggal_akhir == $tanggal_awal){   
+                return back()->with('success', 'File Excel berhasil diimport');
+            }
 
-                    $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
-                    // print('awal');
-                    // dd($saham, $tanggal_awal, $expiryDate);
-                }  
-
-                }
 
                 // dd($array);                
                 return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
-            }
+        }
             
     }
 

@@ -13,11 +13,13 @@
             </div>
         </div>
         <div class="card-body">
-        <!-- <div>
-            <br>
-            <h1 style="text-align: center; color:white; font-family:'Times New Roman', Times, serif;">Projek Saham - Stock</h1>
-            <br>
-        </div> -->
+        
+        @if($message = Session::get('success'))
+            <div class="alert alert-success alert-block">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
             <form action="{{ route('daily_stock') }}" method="POST" enctype="multipart/form-data">
             @csrf
             Pilih Jenis Inputan
@@ -54,11 +56,12 @@
                     <div class=""> Pilih Jenis Emiten
                         <select name="simbol" class="form-select shadow-secondary border-2 ps-0">
                             @foreach($list as $item)
-                            <option value="{{ $item->simbol }}" class="form-check-input" id=""
+                            <option value="{{ $item->id }}" class="form-check-input" id=""
                                 >{{ $item->nama }} [{{ $item->simbol }}]</option>
                             @endforeach
                         </select>
                     </div>
+                    
                     <!-- <a class="btn btn-primary mt-2" style="text-decoration: none;" href="{{ route('back') }}">Back</a> -->
                     <!-- @error('category_name')
                         <div class="alert alert-danger" role="alert">
@@ -70,10 +73,18 @@
 
                 <div class="col-md-6">                    
                     <div class="card card-primary" style="height: 100%;">
-                    <div class="mb-4"> Input File Excel Saham
-                        <input type="file" name="excel" class="form-select shadow-secondary border-2 ps-0">
+                        <div class=""> Input File Excel Saham
+                            <input type="file" name="files" class="form-select shadow-secondary border-2 ps-0">
+                        </div>
+                        <div class=""> Pilih Jenis Emiten
+                        <select name="simbol" class="form-select shadow-secondary border-2 ps-0">
+                            @foreach($list as $item)
+                            <option value="{{ $item->simbol }}" class="form-check-input" id=""
+                                >{{ $item->nama }} [{{ $item->simbol }}]</option>
+                            @endforeach
+                        </select>
                     </div>
-                    </div>       
+                    </div>
                 </div>
                 <button class="btn btn-primary mt-3" type="submit">Submit</button>
             </div>
