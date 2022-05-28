@@ -55,10 +55,14 @@
           <form action="" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
-                  <div class="col-3 mb-4"> <p class="text-sm put"><b>Harga Saham</b></p>
-                      <input type="number" name="harga_saham" class="form-control shadow-secondary border-2 input">
-                      <label class="text-sm put"><b>Laba per Lembar Saham</b></label>
-                      <input type="number" name="laba_lembar_saham" class="form-control shadow-secondary border-2 input">
+                  <div class="col-15 mb-2"> 
+                      <p class="text-sm put"><b>Pilih Jenis Emiten</b></p>
+                      <select name="simbol" class="form-select shadow-secondary border-2 ps-0">
+                        @foreach($list as $item)
+                        <option value="{{ $item->id }}" class="form-check-input" id=""
+                            >{{ $item->nama }} [{{ $item->simbol }}]</option>
+                        @endforeach
+                    </select>
                   </div>
                   <button class="btn btn-primary mt-3" type="submit">Submit</button>
                   <!-- <a class="btn btn-primary mt-2" style="text-decoration: none;" href="{{ route('back') }}">Back</a> -->

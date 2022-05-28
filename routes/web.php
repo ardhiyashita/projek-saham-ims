@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SahamController;
+use App\Http\Controllers\SahamCtrl;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/dash', function () {
+Route::get('/', function () {
     return view('dashboard');
 });
 
@@ -43,7 +44,7 @@ Route::post('/daily-stock', [SahamController::class, 'daily_stock'])->name('dail
 Route::get('/forex', [SahamController::class, 'forex_page'])->name('forex_page');
 Route::post('/intraday-forex', [SahamController::class, 'intraday_forex'])->name('intraday_forex');
 
-Route::get('/exchange', [SahamController::class, 'exchange_page'])->name('exchange_page');
+//Route::get('/exchange', [SahamController::class, 'exchange_page'])->name('exchange_page');
 Route::post('/exchange-price', [SahamController::class, 'exchange_price'])->name('exchange_price');
 
 Route::get('/company', [SahamController::class, 'company_page'])->name('company_page');
@@ -57,3 +58,5 @@ Route::get('/pbv', [SahamController::class, 'pbv_page'])->name('pbv_page');
 Route::get('/roe', [SahamController::class, 'roe_page'])->name('roe_page');
 Route::get('/dy', [SahamController::class, 'dy_page'])->name('dy_page');
 Route::get('/der', [SahamController::class, 'der_page'])->name('der_page');
+
+Route::get('/exchange', [SahamCtrl::class, 'kurs_page'])->name('exchange_page');
