@@ -67,6 +67,14 @@
         </li>
         <div class="submenu-collapse" id="anfumenu">
           <li class="nav-item">
+            <a class="nav-link eps text-white " href="{{ route('fundamental_page') }}">
+              <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Rekap Fundamental</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link eps text-white " href="{{ route('eps_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10"></i>

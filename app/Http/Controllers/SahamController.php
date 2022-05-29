@@ -480,36 +480,42 @@ class SahamController extends Controller
     public function eps_page()
     {
         $list = Emiten::all();
-        return view(('epspage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.epspage'), compact('list', 'hasil'));
     }
 
     public function per_page()
     {
         $list = Emiten::all();
-        return view(('perpage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.perpage'), compact('list', 'hasil'));
     }
 
     public function pbv_page()
     {
         $list = Emiten::all();
-        return view(('pbvpage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.pbvpage'), compact('list', 'hasil'));
     }
 
     public function roe_page()
     {
         $list = Emiten::all();
-        return view(('roepage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.roepage'), compact('list', 'hasil'));
     }
 
 
     public function dy_page()
     {
         $list = Emiten::all();
-        return view(('dypage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.dypage'), compact('list', 'hasil'));
     }
     public function der_page()
     {
         $list = Emiten::all();
-        return view(('derpage'), compact('list'));
+        $hasil = 0;
+        return view(('fundamental.derpage'), compact('list', 'hasil'));
     }
 }

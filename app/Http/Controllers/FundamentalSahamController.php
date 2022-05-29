@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class FundamentalSahamController extends Controller
 {
+    public function fundamental_page(Request $request)
+    {
+        return view('fundamental/fundamentalpage');
+    }
+
+    public function fundamental(Request $request)
+    {
+        return view('fundamental/fundamentalpage');
+    }
+
     public function eps_page(Request $request)
     {
         $hasil = "-";
