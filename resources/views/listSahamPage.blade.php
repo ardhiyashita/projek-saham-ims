@@ -48,30 +48,6 @@
     </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="card my-4">
-          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Pengambilan Data Saham</h6>
-              </div>
-          </div>
-          <div class="card-body">
-            <p class="text-sm">
-                Anda dapat melakukan perhitungan terhadap besarnya EPS dengan masukkan data yang diperlukan dibawah ini
-            </p>     
-            <div>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    @csrf
-                        <div class="form-group">
-                            <button class="btn btn-primary mt-3" type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>          
-            </div>
-          </div>
-      </div>
-    </div>
   </div>
 <!-- DataTables Example -->
 <!-- <div id="wrapper">

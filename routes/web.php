@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+//Route::get('/', [SahamCtrl::class, 'getdb'])->name('dashboard_page');
+
 Route::get('/per', function () {
     return view('tableCompany');
 });
