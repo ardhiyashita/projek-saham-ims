@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FundamentalSahamController;
 use App\Http\Controllers\SahamController;
 use App\Http\Controllers\SahamCtrl;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,20 @@ Route::get('/company', [SahamController::class, 'company_page'])->name('company_
 Route::post('/company-data', [SahamController::class, 'company_data'])->name('company_data');
 
 Route::get('/company-list', [SahamController::class, 'company_list'])->name('company_list');
+
+Route::get('/eps', [FundamentalSahamController::class, 'eps_page'])->name('eps_page');
+Route::get('/per', [FundamentalSahamController::class, 'per_page'])->name('per_page');
+Route::get('/pbv', [FundamentalSahamController::class, 'pbv_page'])->name('pbv_page');
+Route::get('/roe', [FundamentalSahamController::class, 'roe_page'])->name('roe_page');
+Route::get('/dy', [FundamentalSahamController::class, 'dy_page'])->name('dy_page');
+Route::get('/der', [FundamentalSahamController::class, 'der_page'])->name('der_page');
+
+Route::post('/eps-result', [FundamentalSahamController::class, 'eps'])->name('eps');
+Route::post('/per-result', [FundamentalSahamController::class, 'per'])->name('per');
+Route::post('/pbv-result', [FundamentalSahamController::class, 'pbv'])->name('pbv');
+Route::post('/roe-result', [FundamentalSahamController::class, 'roe'])->name('roe');
+Route::post('/dy-result', [FundamentalSahamController::class, 'dy'])->name('dy');
+Route::post('/der-result', [FundamentalSahamController::class, 'der'])->name('der');
 
 Route::get('/eps', [SahamController::class, 'eps_page'])->name('eps_page');
 Route::get('/per', [SahamController::class, 'per_page'])->name('per_page');

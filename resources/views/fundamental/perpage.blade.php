@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'PBV Page')
+@section('title', 'PER Page')
     
 @section('content')
 
@@ -9,14 +9,14 @@
       <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">PBV (Price to Book Value)</h6>
+            <h6 class="text-white text-capitalize ps-3">PER (Price to Earning Ratio)</h6>
           </div>
       </div>
       <div class="card-body">
         <div>
           <p class="text-sm">
-            PBV atau yang dapat dikenal sebagai <i> Price to Book Value </i> adalah rasio yang memberi gambaran terhadap besarnya pasar dalam menilai harga suatu perusahaan yang dibandingkan dengan kekayaan bersihnya. Berikut ini merupakan 
-            rumus yang digunakan dalam perhitungan PBV ini. 
+            PER atau yang dapat dikenal sebagai <i> Price to Earning Ratio </i> adalah yang memberikan gambaran keuntungan pada suatu perusahaan yang dibandingkan dengan harga sahamnya. Berikut ini merupakan 
+            rumus yang digunakan dalam perhitungan PER ini. 
           </p>     
         </div>
       </div>
@@ -28,12 +28,12 @@
       <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Rumus PBV</h6>
+              <h6 class="text-white text-capitalize ps-3">Rumus PER</h6>
             </div>
         </div>
         <div class="card-body">
           <div>
-            <h6 class="mb-0" style="text-align: center;">PBV = Harga Saham : Nilai Buku per Lembar Saham (BV)</h6>          
+            <h6 class="mb-0" style="text-align: center;">PER = Harga Saham : Laba per Lembar Saham (EPS)</h6>          
           </div>
         </div>
     </div>
@@ -45,14 +45,14 @@
       <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
           <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-            <h6 class="text-white text-capitalize ps-3">Kalkulator PBV</h6>
+            <h6 class="text-white text-capitalize ps-3">Kalkulator PER</h6>
           </div>
       </div>
       <div class="card-body">
           <p class="text-sm">
-            Anda dapat melakukan perhitungan terhadap besarnya PBV dengan masukkan data yang diperlukan dibawah ini
+            Anda dapat melakukan perhitungan terhadap besarnya PER dengan masukkan data yang diperlukan dibawah ini
           </p>     
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('per') }}" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
                   <div class="col-15 mb-2"> 
@@ -80,15 +80,15 @@
     <div class="card my-4">
     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-          <h6 class="text-white text-capitalize ps-3">Hasil Perhitungan PBV</h6>
+          <h6 class="text-white text-capitalize ps-3">Hasil Perhitungan PER</h6>
         </div>
     </div>
     <div class="card-body">
         <p class="text-sm">
-          Anda dapat melihat hasil perhitungan terhadap besarnya PBV berdasarkan data yang anda masukkan tadi.
+          Anda dapat melihat hasil perhitungan terhadap besarnya PER berdasarkan data yang anda masukkan tadi.
         </p>
         <div>
-          <h2 class="mb-0 calceps" style="text-align: center;">100 x</h2>          
+          <h2 class="mb-0 calceps" style="text-align: center;">{{ $hasil }} x</h2>          
         </div>  
     </div>
   </div>

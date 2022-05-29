@@ -52,7 +52,7 @@
           <p class="text-sm">
             Anda dapat melakukan perhitungan terhadap besarnya EPS dengan masukkan data yang diperlukan dibawah ini
           </p>     
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('eps') }}" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
                   <div class="col-15 mb-2"> 
@@ -88,7 +88,8 @@
           Anda dapat melihat hasil perhitungan terhadap besarnya EPS berdasarkan data yang anda masukkan tadi.
         </p>
         <div>
-          <h2 class="mb-0 calceps" style="text-align: center;">100</h2>          
+          <h2 class="mb-0 calceps" style="text-align: center;">{{ $hasil }}
+          </h2>          
         </div>  
     </div>
   </div>

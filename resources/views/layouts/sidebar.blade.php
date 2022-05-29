@@ -69,7 +69,7 @@
           <li class="nav-item">
             <a class="nav-link eps text-white " href="{{ route('eps_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <i class="material-icons opacity-10"></i>
               </div>
               <span class="nav-link-text ms-1">EPS</span>
             </a>
@@ -77,7 +77,7 @@
           <li class="nav-item">
             <a class="nav-link per text-white " href="{{ route('per_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <!-- <i class="material-icons opacity-10"></i> -->
               </div>
               <span class="nav-link-text ms-1">PER</span>
             </a>
@@ -85,7 +85,7 @@
           <li class="nav-item">
             <a class="nav-link pbv text-white " href="{{ route('pbv_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <!-- <i class="material-icons opacity-10"></i> -->
               </div>
               <span class="nav-link-text ms-1">PBV</span>
             </a>
@@ -93,7 +93,7 @@
           <li class="nav-item">
             <a class="nav-link roe text-white " href="{{ route('roe_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <!-- <i class="material-icons opacity-10"></i> -->
               </div>
               <span class="nav-link-text ms-1">ROE</span>
             </a>
@@ -101,7 +101,7 @@
           <li class="nav-item">
             <a class="nav-link dy text-white " href="{{ route('dy_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <!-- <i class="material-icons opacity-10"></i> -->
               </div>
               <span class="nav-link-text ms-1">DY</span>
             </a>
@@ -109,7 +109,7 @@
           <li class="nav-item">
             <a class="nav-link der text-white " href="{{ route('der_page') }}">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10">table_view</i>
+                <!-- <i class="material-icons opacity-10"></i> -->
               </div>
               <span class="nav-link-text ms-1">DER</span>
             </a>

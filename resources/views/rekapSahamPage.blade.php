@@ -6,7 +6,7 @@
 
 <div class="row">
         <div class="col-12">
-        <a class="btn-lg btn-primary" style="text-decoration: none;" href="{{ route('stock_page') }}">Pilih Emiten Lain</a>
+        <a class="btn-lg btn-primary" style="text-decoration: none;" href="{{ route('daily_stock_page') }}">Pilih Emiten Lain</a>
         <h5 style="float: right;">Count: {{ $count }}</h5>
           <div class="card my-4 mt-5">          
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">

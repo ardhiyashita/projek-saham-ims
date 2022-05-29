@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Imports\UsersImport;
+use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 
 class SahamController extends Controller
@@ -192,6 +192,31 @@ class SahamController extends Controller
                         $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
                         //mengambil input tanggal_akhir
 
+                        $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
+                        // print('awal');
+                        // dd($saham, $tanggal_awal, $expiryDate);
+                    }
+
+                    // $counts = count($saham);
+                    
+
+                    //     for($i=0; $i<5;){
+
+                    //         if($saham[$i]->close < $saham[$i+1]->close){
+                    //             $grafik = "naik";
+                    //             dd($grafik, $saham[$i]);
+                    //         }
+                    //         elseif($saham[$i]->close > $saham[$i+1]->close){
+                    //             $grafik = "turun";
+                    //         }
+                    //         else{
+                    //             $grafik = "seimbang";
+                    //         }
+
+                    //         $graf = [];
+                    //         array_push($graf, $grafik);
+                            
+                    //     }
                         if ($tanggal_akhir != $tanggal_awal) {
                             $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
                             // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
@@ -205,7 +230,7 @@ class SahamController extends Controller
                         }
                     }
                 }
-
+                // dd($grafik);
                 return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
             }
 
@@ -232,8 +257,7 @@ class SahamController extends Controller
 
 
             // dd($array);                
-            return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
-        }
+            return view('rekapSahamPage', compact('saham', 'simbol', 'count'));        
     }
 
     public function save_intraday_stock(Request $request)
