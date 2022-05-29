@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Emiten;
 use Illuminate\Http\Request;
 
 class FundamentalSahamController extends Controller
 {
-    public function fundamental_page(Request $request)
+    public function fundamental_page()
     {
-        return view('fundamental/fundamentalpage');
+        $list = Emiten::all();
+        return view('fundamental/fundamentalpage', compact('list'));
     }
 
     public function fundamental(Request $request)
     {
-        return view('fundamental/fundamentalpage');
+
+        return view('fundamental/fundamental');
     }
 
     public function eps_page(Request $request)

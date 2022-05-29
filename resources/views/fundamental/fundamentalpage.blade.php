@@ -21,6 +21,15 @@
           <form action="{{ route('fundamental') }}" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
+              <div class="col-15 mb-2"> 
+                      <p class="text-sm put"><b>Pilih Jenis Emiten</b></p>
+                      <select name="simbol" class="form-select shadow-secondary border-2 ps-0">
+                        @foreach($list as $item)
+                        <option value="{{ $item->id }}" class="form-check-input" id=""
+                            >{{ $item->nama }} [{{ $item->simbol }}]</option>
+                        @endforeach
+                    </select>
+                  </div>
                   <div class="col-15 mb-2"> 
                         <div class="form-check mt-3">
                         <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
@@ -28,10 +37,10 @@
                                 EPS
                             </label>
                             </div>
-                              <p class="text-sm put"><b>laba bersih</b></p>
-                                <input type="text" name="eps">
+                              <p class="text-sm put"><b>laba_bersih</b></p>
+                                <input type="text" name="laba_bersih">
                               <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
-                                <input type="text" name="eps">
+                                <input type="text" name="jumlah_lembar_saham">
 
 
                         <div class="form-check mt-3">
@@ -40,10 +49,10 @@
                                 PER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>harga saham</b></p>
-                                <input type="text" name="per">
+                              <p class="text-sm put"><b>harga_saham</b></p>
+                                <input type="text" name="harga_saham">
                               <p class="text-sm put"><b>laba_lembar_saham</b></p>
-                                <input type="text" name="per">
+                                <input type="text" name="laba_lembar_saham">
 
 
                         <div class="form-check mt-3">
@@ -52,8 +61,10 @@
                                 PBV
                             </label>
                             </div>
-                              <p class="text-sm put"><b>pbv</b></p>
-                                <input type="text" name="pbv">
+                              <p class="text-sm put"><b>harga_saham</b></p>
+                                <input type="text" name="harga_saham">
+                              <p class="text-sm put"><b>nilai_buku_lembar_saham</b></p>
+                                <input type="text" name="nilai_buku_lembar_saham">
 
 
                         <div class="form-check mt-3">
@@ -62,8 +73,10 @@
                                 ROE
                             </label>
                             </div>
-                              <p class="text-sm put"><b>roe</b></p>
-                                <input type="text" name="roe">
+                              <p class="text-sm put"><b>laba_bersih</b></p>
+                                <input type="text" name="laba_bersih">
+                              <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
+                                <input type="text" name="jumlah_lembar_saham">
 
 
                         <div class="form-check mt-3">
@@ -72,8 +85,10 @@
                                 DY
                             </label>
                             </div>
-                              <p class="text-sm put"><b>dy</b></p>
-                                <input type="text" name="dy">
+                              <p class="text-sm put"><b>dividen_lembar_saham</b></p>
+                                <input type="text" name="dividen_lembar_saham">
+                              <p class="text-sm put"><b>harga_saham</b></p>
+                                <input type="text" name="harga_saham">
 
 
                         <div class="form-check mt-3">
@@ -82,8 +97,10 @@
                                 DER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>der</b></p>
-                                <input type="text" name="der">
+                              <p class="text-sm put"><b>hutang</b></p>
+                                <input type="text" name="hutang">
+                              <p class="text-sm put"><b>modal_sendiri</b></p>
+                                <input type="text" name="modal_sendiri">
                   </div>
                   <button class="btn btn-primary mt-3" type="submit">Submit</button>
                   <!-- <a class="btn btn-primary mt-2" style="text-decoration: none;" href="{{ route('back') }}">Back</a> -->

@@ -228,7 +228,6 @@ class SahamController extends Controller
                             // print('awal');
                             // dd($saham, $tanggal_awal, $expiryDate);
                         }
-                    }
                 }
                 // dd($grafik);
                 return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
@@ -241,13 +240,13 @@ class SahamController extends Controller
 
                 // Store on default disk
                 $file = $request->files;
+                dd($file);
                 $path = $request->file('files')->getClientOriginalName();
                 $filename = "/assets_edit/" . $path;
                 $file->move($filename);
 
                 // $import = Excel::store(new InvoicesExport(2018), $filename);
 
-                dd($filename);
                 // $data = Excel::load($path)->get();
                 $data = Excel::import(new UsersImport, $path);
                 dd($data);
@@ -258,6 +257,7 @@ class SahamController extends Controller
 
             // dd($array);                
             return view('rekapSahamPage', compact('saham', 'simbol', 'count'));        
+        }
     }
 
     public function save_intraday_stock(Request $request)
