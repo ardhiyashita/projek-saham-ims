@@ -68,12 +68,14 @@ Route::post('/roe-result', [FundamentalSahamController::class, 'roe'])->name('ro
 Route::post('/dy-result', [FundamentalSahamController::class, 'dy'])->name('dy');
 Route::post('/der-result', [FundamentalSahamController::class, 'der'])->name('der');
 
+Route::get('/fundamental-rekap', [FundamentalSahamController::class, 'fundamental_rekap'])->name('fundamental_rekap');
+Route::get('/fundamental-hasil', [FundamentalSahamController::class, 'fundamental_hasil'])->name('fundamental_hasil');
 Route::get('/fundamental', [FundamentalSahamController::class, 'fundamental_page'])->name('fundamental_page');
-Route::get('/eps', [SahamController::class, 'eps_page'])->name('eps_page');
-Route::get('/per', [SahamController::class, 'per_page'])->name('per_page');
-Route::get('/pbv', [SahamController::class, 'pbv_page'])->name('pbv_page');
-Route::get('/roe', [SahamController::class, 'roe_page'])->name('roe_page');
-Route::get('/dy', [SahamController::class, 'dy_page'])->name('dy_page');
-Route::get('/der', [SahamController::class, 'der_page'])->name('der_page');
+Route::get('/eps', [FundamentalSahamController::class, 'eps_page'])->name('eps_page');
+Route::get('/per', [FundamentalSahamController::class, 'per_page'])->name('per_page');
+Route::get('/pbv', [FundamentalSahamController::class, 'pbv_page'])->name('pbv_page');
+Route::get('/roe', [FundamentalSahamController::class, 'roe_page'])->name('roe_page');
+Route::get('/dy', [FundamentalSahamController::class, 'dy_page'])->name('dy_page');
+Route::get('/der', [FundamentalSahamController::class, 'der_page'])->name('der_page');
 
 Route::get('/exchange', [SahamCtrl::class, 'kurs_page'])->name('exchange_page');
