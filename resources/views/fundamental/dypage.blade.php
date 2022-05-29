@@ -52,11 +52,11 @@
           <p class="text-sm">
             Anda dapat melakukan perhitungan terhadap besarnya DY dengan masukkan data yang diperlukan dibawah ini
           </p>     
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('dy') }}" method="POST" enctype="multipart/form-data">
           @csrf
               <div class="form-group">
                   <div class="col-3 mb-4"> <p class="text-sm put"><b>Dividend per Lembar Saham</b></p>
-                      <input type="number" name="dividend_lembar_saham" class="form-control shadow-secondary border-2 input">
+                      <input type="number" name="dividen_lembar_saham" class="form-control shadow-secondary border-2 input">
                       <label class="text-sm put"><b>Harga Saham</b></label>
                       <input type="number" name="harga_saham" class="form-control shadow-secondary border-2 input">
                   </div>
@@ -84,7 +84,7 @@
           Anda dapat melihat hasil perhitungan terhadap besarnya DY berdasarkan data yang anda masukkan tadi.
         </p>
         <div>
-          <h2 class="mb-0 calceps" style="text-align: center;">100%</h2>          
+          <h2 class="mb-0 calceps" style="text-align: center;">{{ $hasil }} %</h2>          
         </div>  
     </div>
   </div>

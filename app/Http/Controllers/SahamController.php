@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use App\Imports\UsersImport;
+use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Facades\Excel;
-
 
 
 class SahamController extends Controller
@@ -202,11 +202,32 @@ class SahamController extends Controller
                         $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
                         // print('awal');
                         // dd($saham, $tanggal_awal, $expiryDate);
-                    }  
+                    }
+
+                    // $counts = count($saham);
+                    
+
+                    //     for($i=0; $i<5;){
+
+                    //         if($saham[$i]->close < $saham[$i+1]->close){
+                    //             $grafik = "naik";
+                    //             dd($grafik, $saham[$i]);
+                    //         }
+                    //         elseif($saham[$i]->close > $saham[$i+1]->close){
+                    //             $grafik = "turun";
+                    //         }
+                    //         else{
+                    //             $grafik = "seimbang";
+                    //         }
+
+                    //         $graf = [];
+                    //         array_push($graf, $grafik);
+                            
+                    //     }
 
                     }
                 }
-
+                // dd($grafik);
                 return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
 
             }
@@ -456,33 +477,4 @@ class SahamController extends Controller
             
     }*/
 
-    public function eps_page()
-    {
-        return view('epspage');
-    }
-
-    public function per_page()
-    {
-        return view('perpage');
-    }
-
-    public function pbv_page()
-    {
-        return view('pbvpage');
-    }
-
-    public function roe_page()
-    {
-        return view('roepage');
-    }
-
-
-    public function dy_page()
-    {
-        return view('dypage');
-    }
-    public function der_page()
-    {
-        return view('derpage');
-    }
 }
