@@ -32,75 +32,75 @@
                   </div>
                   <div class="col-15 mb-2"> 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input eps" name="api" id="apieps" type="checkbox" class="apis" value="api" onclick="epscheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 EPS
                             </label>
                             </div>
-                              <p class="text-sm put"><b>laba_bersih</b></p>
-                                <input type="text" name="laba_bersih">
-                              <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
-                                <input type="text" name="jumlah_lembar_saham">
-
+                              <p class="text-sm put">
+                                <b>Laba Bersih</b></p>
+                                <input type="text" id="epscal1" class="form-control shadow-secondary border-2 ps-0" name="laba_bersih" disabled>
+                              <p class="text-sm put">
+                                <b>Jumlah Lembar Saham</b></p>
+                                <input type="text" id="epscal2" class="form-control shadow-secondary border-2 ps-0" name="jumlah_lembar_saham" disabled>
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input" name="api" id="apiper" type="checkbox" class="apis" value="api" onclick="percheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 PER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" name="harga_saham">
-                              <p class="text-sm put"><b>laba_lembar_saham</b></p>
-                                <input type="text" name="laba_lembar_saham">
-
+                              <p class="text-sm put"><b>Harga Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="percal1" name="harga_saham" disabled>
+                              <p class="text-sm put"><b>Laba Lembar Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="percal2" name="laba_lembar_saham" disabled>
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input" name="api" id="apipbv" type="checkbox" class="apis" value="api" onclick="pbvcheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 PBV
                             </label>
                             </div>
-                              <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" name="harga_saham">
-                              <p class="text-sm put"><b>nilai_buku_lembar_saham</b></p>
-                                <input type="text" name="nilai_buku_lembar_saham">
+                              <p class="text-sm put"><b>Harga Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="pbvcal1" name="harga_saham" disabled>
+                              <p class="text-sm put"><b>Nilai Buku Lembar Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="pbvcal2" name="nilai_buku_lembar_saham" disabled>
 
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input" name="api" id="apiroe" type="checkbox" class="apis" value="api" onclick="roecheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 ROE
                             </label>
                             </div>
-                              <p class="text-sm put"><b>laba_bersih</b></p>
-                                <input type="text" name="laba_bersih">
-                              <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
-                                <input type="text" name="jumlah_lembar_saham">
+                              <p class="text-sm put"><b>Laba Bersih</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="roecal1" name="laba_bersih" disabled>
+                              <p class="text-sm put"><b>Jumlah Lembar Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="roecal2" name="jumlah_lembar_saham" disabled>
 
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input" name="api" id="apidy" type="checkbox" class="apis" value="api" onclick="dycheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 DY
                             </label>
                             </div>
-                              <p class="text-sm put"><b>dividen_lembar_saham</b></p>
-                                <input type="text" name="dividen_lembar_saham">
-                              <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" name="harga_saham">
+                              <p class="text-sm put"><b>Dividen Lembar Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="dycal1" name="dividen_lembar_saham" disabled>
+                              <p class="text-sm put"><b>Harga Saham</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="dycal2" name="harga_saham" disabled>
 
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="api" id="api" type="checkbox" class="apis" value="api">
+                        <input class="form-check-input" name="api" id="apider" type="checkbox" class="apis" value="api" onclick="dercheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 DER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>hutang</b></p>
-                                <input type="text" name="hutang">
-                              <p class="text-sm put"><b>modal_sendiri</b></p>
-                                <input type="text" name="modal_sendiri">
+                              <p class="text-sm put"><b>Hutang</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="dercal1" name="hutang" disabled>
+                              <p class="text-sm put"><b>Modal Sendiri</b></p>
+                                <input type="text" class="form-control shadow-secondary border-2 ps-0" id="dercal2" name="modal_sendiri" disabled>
                   </div>
                   <button class="btn btn-primary mt-3" type="submit">Submit</button>
                   <!-- <a class="btn btn-primary mt-2" style="text-decoration: none;" href="{{ route('back') }}">Back</a> -->

@@ -39,6 +39,7 @@
   <!-- JS Files -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/assets/js/menu.js" type="text/javascript"></script>
+  <script src="/assets/js/anfu.js" type="text/javascript"></script>
   <!-- <link href="./assets/css/datatable.css" rel="stylesheet" /> -->
 </head>
 
