@@ -136,31 +136,31 @@ class SahamController extends Controller
 
 
     public function daily_stock(Request $request)
-    {        
+    {
         $excel = $request->excel;
         $api = $request->api;
 
-        if($api or $excel){
+        if ($api or $excel) {
 
-            if($api){
+            if ($api) {
 
-            $key = 'MNOJKRVA1YI2TVBN';
-            $simbol = $request->simbol;
-            // dd($simbol);
-            $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=".$simbol."&apikey=".$key);
+                $key = 'MNOJKRVA1YI2TVBN';
+                $simbol = $request->simbol;
+                // dd($simbol);
+                $response = Http::get("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=" . $simbol . "&apikey=" . $key);
 
                 if ($response->status() !== 200) {
                     return 'Conection Failed!!';
                 }
 
-                $data = json_decode($response,true);
+                $data = json_decode($response, true);
                 // dd($data);
 
                 if (empty($data)) {
                     return 'Return Empty Data';
                 }
 
-                if($data){
+                if ($data) {
                     $key = array_values($data);
                     $array = $key[1];
                     // dd($array);
@@ -172,32 +172,25 @@ class SahamController extends Controller
                     $count = count($array);
                     //menghitung jumlah data yang didapatkan
 
-                    foreach($array as $key => $value) {
+                    foreach ($array as $key => $value) {
                         // to dump array key and value
                         // if( > 2){
                         //     break;
                         // }
                         // else{
-                            RekapSaham::create([
-                                'emiten_id' => $emiten_id,
-                                'tanggal' => $key,
-                                'open' => $value['1. open'],
-                                'close' => $value['4. close'],
-                                'sumber' => 'API Alphavantage',
-                            ]);
+                        RekapSaham::create([
+                            'emiten_id' => $emiten_id,
+                            'tanggal' => $key,
+                            'open' => $value['1. open'],
+                            'close' => $value['4. close'],
+                            'sumber' => 'API Alphavantage',
+                        ]);
 
-                    $tanggal_awal = Carbon::parse($request->tanggal_awal)->toDateString();
-                    //mengambil input tanggal_awal
+                        $tanggal_awal = Carbon::parse($request->tanggal_awal)->toDateString();
+                        //mengambil input tanggal_awal
 
-                    $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
-                    //mengambil input tanggal_akhir
-
-                    if($tanggal_akhir != $tanggal_awal){
-                        $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
-                        // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
-                    }
-                    
-                    if($tanggal_akhir == $tanggal_awal){   
+                        $tanggal_akhir = Carbon::parse($request->tanggal_akhir)->toDateString();
+                        //mengambil input tanggal_akhir
 
                         $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
                         // print('awal');
@@ -224,15 +217,24 @@ class SahamController extends Controller
                     //         array_push($graf, $grafik);
                             
                     //     }
+                        if ($tanggal_akhir != $tanggal_awal) {
+                            $saham = RekapSaham::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->where('emiten_id', '=', $emiten_id)->get();
+                            // dd($saham, $tanggal_akhir, $tanggal_awal, $emiten_id);
+                        }
 
+                        if ($tanggal_akhir == $tanggal_awal) {
+
+                            $saham = RekapSaham::where('tanggal', '=', $tanggal_awal, 'and', 'emiten_id', '=', $emiten_id)->get();
+                            // print('awal');
+                            // dd($saham, $tanggal_awal, $expiryDate);
+                        }
                     }
                 }
                 // dd($grafik);
                 return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
-
             }
 
-            if($excel){
+            if ($excel) {
                 $request->validate([
                     'files' => 'required|mimes:xls,xlsx',
                 ]);
@@ -240,7 +242,7 @@ class SahamController extends Controller
                 // Store on default disk
                 $file = $request->files;
                 $path = $request->file('files')->getClientOriginalName();
-                $filename = "/assets_edit/".$path;
+                $filename = "/assets_edit/" . $path;
                 $file->move($filename);
 
                 // $import = Excel::store(new InvoicesExport(2018), $filename);
@@ -249,15 +251,13 @@ class SahamController extends Controller
                 // $data = Excel::load($path)->get();
                 $data = Excel::import(new UsersImport, $path);
                 dd($data);
-                
+
                 return back()->with('success', 'File Excel berhasil diimport');
             }
 
 
-                // dd($array);                
-                return view('rekapSahamPage', compact('saham', 'simbol', 'count'));
-        }
-            
+            // dd($array);                
+            return view('rekapSahamPage', compact('saham', 'simbol', 'count'));        
     }
 
     public function save_intraday_stock(Request $request)
@@ -477,4 +477,39 @@ class SahamController extends Controller
             
     }*/
 
+    public function eps_page()
+    {
+        $list = Emiten::all();
+        return view(('epspage'), compact('list'));
+    }
+
+    public function per_page()
+    {
+        $list = Emiten::all();
+        return view(('perpage'), compact('list'));
+    }
+
+    public function pbv_page()
+    {
+        $list = Emiten::all();
+        return view(('pbvpage'), compact('list'));
+    }
+
+    public function roe_page()
+    {
+        $list = Emiten::all();
+        return view(('roepage'), compact('list'));
+    }
+
+
+    public function dy_page()
+    {
+        $list = Emiten::all();
+        return view(('dypage'), compact('list'));
+    }
+    public function der_page()
+    {
+        $list = Emiten::all();
+        return view(('derpage'), compact('list'));
+    }
 }
