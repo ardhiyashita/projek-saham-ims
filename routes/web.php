@@ -53,13 +53,14 @@ Route::post('/company-data', [SahamController::class, 'company_data'])->name('co
 
 Route::get('/company-list', [SahamController::class, 'company_list'])->name('company_list');
 
-Route::get('/eps', [FundamentalSahamController::class, 'eps_page'])->name('eps_page');
-Route::get('/per', [FundamentalSahamController::class, 'per_page'])->name('per_page');
-Route::get('/pbv', [FundamentalSahamController::class, 'pbv_page'])->name('pbv_page');
-Route::get('/roe', [FundamentalSahamController::class, 'roe_page'])->name('roe_page');
-Route::get('/dy', [FundamentalSahamController::class, 'dy_page'])->name('dy_page');
-Route::get('/der', [FundamentalSahamController::class, 'der_page'])->name('der_page');
+// Route::get('/eps', [FundamentalSahamController::class, 'eps_page'])->name('eps_page');
+// Route::get('/per', [FundamentalSahamController::class, 'per_page'])->name('per_page');
+// Route::get('/pbv', [FundamentalSahamController::class, 'pbv_page'])->name('pbv_page');
+// Route::get('/roe', [FundamentalSahamController::class, 'roe_page'])->name('roe_page');
+// Route::get('/dy', [FundamentalSahamController::class, 'dy_page'])->name('dy_page');
+// Route::get('/der', [FundamentalSahamController::class, 'der_page'])->name('der_page');
 
+Route::post('/fundamental-result', [FundamentalSahamController::class, 'fundamental'])->name('fundamental');
 Route::post('/eps-result', [FundamentalSahamController::class, 'eps'])->name('eps');
 Route::post('/per-result', [FundamentalSahamController::class, 'per'])->name('per');
 Route::post('/pbv-result', [FundamentalSahamController::class, 'pbv'])->name('pbv');
@@ -67,6 +68,7 @@ Route::post('/roe-result', [FundamentalSahamController::class, 'roe'])->name('ro
 Route::post('/dy-result', [FundamentalSahamController::class, 'dy'])->name('dy');
 Route::post('/der-result', [FundamentalSahamController::class, 'der'])->name('der');
 
+Route::get('/fundamental', [FundamentalSahamController::class, 'fundamental_page'])->name('fundamental_page');
 Route::get('/eps', [SahamController::class, 'eps_page'])->name('eps_page');
 Route::get('/per', [SahamController::class, 'per_page'])->name('per_page');
 Route::get('/pbv', [SahamController::class, 'pbv_page'])->name('pbv_page');
