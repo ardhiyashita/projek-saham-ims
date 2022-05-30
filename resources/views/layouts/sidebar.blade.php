@@ -123,7 +123,6 @@
             </a>
           </li>
         </div>
-
         <li class="nav-item">
           <a class="nav-link company-list text-white " href="{{ route('company_list') }}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

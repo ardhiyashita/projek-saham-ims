@@ -79,3 +79,4 @@ Route::get('/dy', [SahamController::class, 'dy_page'])->name('dy_page');
 Route::get('/der', [SahamController::class, 'der_page'])->name('der_page');
 
 Route::get('/exchange', [SahamCtrl::class, 'kurs_page'])->name('exchange_page');
+Route::get('/graph', [SahamCtrl::class, 'graph_page'])->name('graph_page');

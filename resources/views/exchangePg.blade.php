@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'PBV Page')
+@section('title', 'Kurs Page')
     
 @section('content')
 

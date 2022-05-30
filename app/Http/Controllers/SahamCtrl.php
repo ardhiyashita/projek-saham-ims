@@ -22,6 +22,13 @@ class SahamCtrl extends Controller
     return view('exchangePg');
   }
 
+  public function graph_page(){
+    
+    $list = Emiten::all();
+    return view('grafikPage', compact('list'));
+    
+  }
+
   public function getdb()
   {
     $codecom = "AALI";
