@@ -14,10 +14,10 @@
         </div>
         <div class="card-body">
         
-        @if($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">x</button>
-                <strong>{{ $message }}</strong>
+        @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-white">{{ session('success') }}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
             <form action="{{ route('daily_stock') }}" method="POST" enctype="multipart/form-data">
@@ -106,11 +106,11 @@
                 Anda dapat melakukan pengambilan data saham dalam kurun waktu tertentu. Silahkan lengkapi data yang tersedia dibawah ini.
             </p>     
             <div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('getdb') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="form-group">
                             <p class="text-sm put"><b>Pilih Jenis Emiten</b></p>
-                            <select class="form-select shadow-secondary border-2 ps-0" id="emiten" name="jenis_emiten">
+                            <select class="form-select shadow-secondary border-2 ps-0" id="emiten" name="simbol">
                                 @foreach($list as $item)
                                 <option value="{{ $item->simbol }}" class="form-check-input" id=""
                                     >{{ $item->nama }} [{{ $item->simbol }}]</option>

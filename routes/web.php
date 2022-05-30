@@ -20,10 +20,8 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-//Route::get('/', [SahamCtrl::class, 'getdb'])->name('dashboard_page');
-
-Route::get('/per', function () {
-    return view('tableCompany');
+Route::get('/graf', function () {
+    return view('grafikSahamPage');
 });
 
 Route::get('/dashboard2', function () {
@@ -81,3 +79,6 @@ Route::get('/dy', [FundamentalSahamController::class, 'dy_page'])->name('dy_page
 Route::get('/der', [FundamentalSahamController::class, 'der_page'])->name('der_page');
 
 Route::get('/exchange', [SahamCtrl::class, 'kurs_page'])->name('exchange_page');
+Route::post('/getdb', [SahamCtrl::class, 'getdb'])->name('getdb');
+Route::get('/grafik-page', [SahamCtrl::class, 'grafikPage'])->name('grafik_page');
+Route::post('/grafik', [SahamCtrl::class, 'grafik'])->name('grafik');
