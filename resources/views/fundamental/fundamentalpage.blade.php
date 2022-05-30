@@ -50,103 +50,100 @@
                   <div class="col-15 mb-2"> 
                     <div class="form-group">
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="eps" type="checkbox" value="eps">
+                        <input class="form-check-input" name="eps" id="apieps" type="checkbox" value="eps" onclick="epscheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 EPS
                             </label>
                             </div>
-                              <p class="text-sm put"><b>laba_bersih</b></p>
-                                <input type="text" class="form-control mt-1 @error('laba_bersih_eps') is-invalid @enderror" name="laba_bersih_eps" value="{{ old('laba_bersih_eps') }}" autofocus>
+                              <p class="text-sm put"><b>Laba Bersih</b></p>
+                                <input type="text" id="epscal1" class="form-control shadow-secondary border-2 ps-0 @error('laba_bersih_eps') is-invalid @enderror" name="laba_bersih_eps" value="{{ old('laba_bersih_eps') }}" autofocus disabled>
                                 @error('laba_bersih_eps')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                              <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('jumlah_lembar_saham_eps') is-invalid @enderror" name="jumlah_lembar_saham_eps" value="{{ old('jumlah_lembar_saham_eps') }}" autofocus>
+                              <p class="text-sm put"><b>Jumlah Lembar Saham</b></p>
+                                <input type="text" id="epscal2" class="form-control shadow-secondary border-2 ps-0 @error('jumlah_lembar_saham_eps') is-invalid @enderror" name="jumlah_lembar_saham_eps" value="{{ old('jumlah_lembar_saham_eps') }}" autofocus disabled>
                                 @error('jumlah_lembar_saham_eps')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
-
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="per" type="checkbox" value="per">
+                        <input class="form-check-input" id="apiper" name="per" type="checkbox" value="per" onclick="percheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 PER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('eps') is-invalid @enderror" name="harga_saham_per" value="{{ old('harga_saham_per') }}" autofocus>
+                              <p class="text-sm put"><b>Harga Saham</b></p>
+                                <input type="text" id="percal1" class="form-control shadow-secondary border-2 ps-0 @error('eps') is-invalid @enderror" name="harga_saham_per" value="{{ old('harga_saham_per') }}" autofocus disabled>
                                 @error('eps')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="pbv" type="checkbox" value="pbv">
+                        <input class="form-check-input" id="apipbv" name="pbv" type="checkbox" value="pbv" onclick="pbvcheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 PBV
                             </label>
                             </div>
-                              <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('harga_saham_pbv') is-invalid @enderror" name="harga_saham_pbv" value="{{ old('harga_saham_pbv') }}" autofocus>
+                              <p class="text-sm put"><b>Harga Saham</b></p>
+                                <input type="text" id="pbvcal1" class="form-control shadow-secondary border-2 ps-0 @error('harga_saham_pbv') is-invalid @enderror" name="harga_saham_pbv" value="{{ old('harga_saham_pbv') }}" autofocus disabled>
                                 @error('harga_saham_pbv')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                              <p class="text-sm put"><b>nilai_buku_lembar_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('nilai_buku_lembar_saham_pbv') is-invalid @enderror" name="nilai_buku_lembar_saham_pbv" value="{{ old('nilai_buku_lembar_saham_pbv') }}" autofocus>
+                              <p class="text-sm put"><b>Nilai Buku Lembar Saham</b></p>
+                                <input type="text" id="pbvcal2" class="form-control shadow-secondary border-2 ps-0 @error('nilai_buku_lembar_saham_pbv') is-invalid @enderror" name="nilai_buku_lembar_saham_pbv" value="{{ old('nilai_buku_lembar_saham_pbv') }}" autofocus disabled>
                                 @error('nilai_buku_lembar_saham_pbv')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
-
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="roe" type="checkbox" value="roe">
+                        <input class="form-check-input" id="apiroe" name="roe" type="checkbox" value="roe" onclick="roecheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 ROE
                             </label>
                             </div>
-                              <p class="text-sm put"><b>laba_bersih_roe</b></p>
-                                <input type="text" class="form-control mt-1 @error('laba_bersih_roe') is-invalid @enderror" name="laba_bersih_roe" value="{{ old('laba_bersih_roe') }}" autofocus>
+                              <p class="text-sm put"><b>Laba Bersih Roe</b></p>
+                                <input type="text" id="roecal1" class="form-control shadow-secondary border-2 ps-0  @error('laba_bersih_roe') is-invalid @enderror" name="laba_bersih_roe" value="{{ old('laba_bersih_roe') }}" autofocus disabled>
                                 @error('laba_bersih_roe')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                              <p class="text-sm put"><b>jumlah_lembar_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('kekayaan_bersih_roe') is-invalid @enderror" name="kekayaan_bersih_roe" value="{{ old('kekayaan_bersih_roe') }}" autofocus>
+                              <p class="text-sm put"><b>Jumlah Lembar Saham</b></p>
+                                <input type="text"  id="roecal2" class="form-control shadow-secondary border-2 ps-0  @error('kekayaan_bersih_roe') is-invalid @enderror" name="kekayaan_bersih_roe" value="{{ old('kekayaan_bersih_roe') }}" autofocus disabled>
                                 @error('kekayaan_bersih_roe')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
-
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="dy" type="checkbox" value="dy">
+                        <input class="form-check-input" id="apidy" name="dy" type="checkbox" value="dy" onclick="dycheck()" />
                             <label class="form-check-label" for="flexCheckDefault">
                                 DY
                             </label>
                             </div>
-                              <p class="text-sm put"><b>dividen_lembar_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('dividen_lembar_saham_dy') is-invalid @enderror" name="dividen_lembar_saham_dy" value="{{ old('dividen_lembar_saham_dy') }}" autofocus>
+                              <p class="text-sm put"><b>Dividen Lembar Saham</b></p>
+                                <input type="text" id="dycal1" class="form-control shadow-secondary border-2 ps-0 @error('dividen_lembar_saham_dy') is-invalid @enderror" name="dividen_lembar_saham_dy" value="{{ old('dividen_lembar_saham_dy') }}" autofocus disabled>
                                 @error('dividen_lembar_saham_dy')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                               <p class="text-sm put"><b>harga_saham</b></p>
-                                <input type="text" class="form-control mt-1 @error('harga_saham_dy') is-invalid @enderror" name="harga_saham_dy" value="{{ old('harga_saham_dy') }}" autofocus>
+                                <input type="text" id="dycal2" class="form-control shadow-secondary border-2 ps-0 @error('harga_saham_dy') is-invalid @enderror" name="harga_saham_dy" value="{{ old('harga_saham_dy') }}" autofocus disabled>
                                 @error('harga_saham_dy')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
 
 
                         <div class="form-check mt-3">
-                        <input class="form-check-input" name="der" type="checkbox" value="der">
+                        <input class="form-check-input" id="apider" name="der" type="checkbox" value="der" onclick="dercheck()">
                             <label class="form-check-label" for="flexCheckDefault">
                                 DER
                             </label>
                             </div>
-                              <p class="text-sm put"><b>hutang / kewajiban</b></p>
-                                <input type="text" class="form-control mt-1 @error('hutang_der') is-invalid @enderror" name="hutang_der" value="{{ old('hutang_der') }}" autofocus>
+                              <p class="text-sm put"><b>Hutang / Kewajiban</b></p>
+                                <input type="text" id="dercal1" class="form-control shadow-secondary border-2 ps-0 @error('hutang_der') is-invalid @enderror" name="hutang_der" value="{{ old('hutang_der') }}" autofocus disabled>
                                 @error('hutang_der')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                              <p class="text-sm put"><b>modal_sendiri / kekayaan_bersih</b></p>
-                                <input type="text" class="form-control mt-1 @error('modal_sendiri_der') is-invalid @enderror" name="modal_sendiri_der" value="{{ old('modal_sendiri_der') }}" autofocus>
+                              <p class="text-sm put"><b>Modal Sendiri / Kekayaan Bersih</b></p>
+                                <input type="text" id="dercal2" class="form-control shadow-secondary border-2 ps-0 @error('modal_sendiri_der') is-invalid @enderror" name="modal_sendiri_der" value="{{ old('modal_sendiri_der') }}" autofocus disabled>
                                 @error('modal_sendiri_der')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
